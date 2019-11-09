@@ -16,16 +16,26 @@ end2=0
 enemy2=[4,14,7,21,1,100]
 enemyhealth2=[5,5,5,10,10,5]
 ended=False
+from PIL import Image
+yousprite=Image.open(you.jpg)
+from PIL import Image
+goblinsprite=Image.open(goblin.jpg)
+from PIL import Image
+greatgoblinsprite=Image.open(greatgoblin.jpg)
+from PIL import Image
+endgoblinsprite=Image.open(endgoblin.jpg)
+from PIL import Image
+chefgoblinsprite=Image.open(chefgoblin.jpg)
 print("")
 print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 print("You grew up in an underground mine.  Not long after you come of age, goblins attack your underground village, killing everyone you ever knew.")
 print("You are captured alive but manage to escape and take the sword from one of your captors.  You find yourself in the centre of the goblins' dungeon and must try to escape.")
 print("")
 print("Controls:")
-print("2: move right                           | ")
-print("1: move left                    O=======|=======================================>")
-print("4: attack right                         |") 
-print("3: attack left")
+print("d: move right                           | ")
+print("a: move left                    O=======|=======================================>")
+print("e: attack right                         |") 
+print("q: attack left")
 print("")
 print("____________________________________________________________________________________________________________________________________________________________________________")
 print("")
@@ -39,22 +49,22 @@ while ended==False:
 		print("Your location is:")
 		print(1,loc)
 		next=input("<=======|==o What do you do now? o==|=======>")	
-		if next!=1 and next!=2 and next!=3 and next!=4:
+		if next!="a" and next!="d" and next!="q" and next!="e":
 			print("Wrong button.")
 		block=False
-		if next==2:
+		if next=="d":
 			for i in enemy:
 				if loc+1==i:
 					print("An enemy is there!")
-					block=True
-		elif next==1:	
+					blockr=True
+		elif next=="a":	
 			for i in enemy:
 				if loc-1==i:
 					print("An enemy is there!")
-					block=True
-		elif next==4:
+					blockl=True
+		elif next=="e":
 			attf=True
-		elif next==3:
+		elif next=="q":
 			attb=True
 		if attf==True:
 			for i in enemy:
@@ -78,9 +88,9 @@ while ended==False:
 				if enemyhealth[i]==0 and loc==enemy[i]+1:
 					enemy[i]=clear
 					print("Enemy killed!")
-		if next==2 and block==False and loc!=20:
+		if next=="d" and blockr==False and loc!=20:
 			loc=loc+1
-		elif next==1 and block==False and loc!=0:
+		elif next=="a" and blockl==False and loc!=0:
 			loc=loc-1
 		if loc==18 and enemyhealth[4]==10:
 			print("A great goblin stands before you!")
@@ -131,24 +141,25 @@ while ended==False:
 				print("Having defeated the goblin, you retreat out of the dining hall and back into the cave.")
 				loc=19
 			next=input("<=======|==o What do you do now? o==|=======>")
-			if next!=1 and next!=2 and next!=3 and next!=4:
+			if next!="a" and next!="d" and next!="q" and next!="e":
 				print("Wrong button.")
-			block=False
+			blockr=False
+			blockl=False
 			if loc2==1 and portcullis==False and next==1:
 				ended=True
-			if next==2:
+			if next=="d":
 				for i in enemy:
 					if loc2+1==i:
 						print("An enemy is there!")
-						block=True
-			elif next==1:	
+						blockr=True
+			elif next=="a":	
 				for i in enemy:
 					if loc2-1==i:
 						print("An enemy is there!")
-						block=True
-			elif next==4:
+						blockl=True
+			elif next=="e":
 				attf=True
-			elif next==3:
+			elif next=="q":
 				attb=True
 			if attf==True:
 				for i in enemy2:
@@ -172,9 +183,9 @@ while ended==False:
 					if enemyhealth2[i]==0 and loc2==enemy2[i]+1:
 						enemy2[i]=clear
 						print("Enemy killed!")
-			if next==2 and block==False and loc2+1!=21 and loc2!=21:
+			if next=="d" and blockr==False and loc2+1!=21 and loc2!=21:
 				loc2=loc2+1
-			elif next==1 and block==False and loc2!=1:
+			elif next=="a" and blockl==False and loc2!=1:
 				loc2=loc2-1
 			if loc2==2 and enemyhealth2[4]==25:
 				print("A great goblin clad in rusting iron armour stands between you and the safety of the overworld!")
@@ -208,7 +219,7 @@ while ended==False:
 			if health==0 or health==-1 or health==-2 or health==-3:
 				print("You succumb to your injuries and die having never seen the light of day.")
 				break
-			if loc2==20 and enemyhealth2[3]==0 and next==2:
+			if loc2==20 and enemyhealth2[3]==0 and next=="d":
 				cont=True
 				loc=20
 				print("You explore the hall but find that it is a dead end leading to nothing but the kitchen, where grisly trophies hang from the ceiling, waiting to be eaten.")
