@@ -26,6 +26,8 @@ from PIL import Image
 endgoblinsprite=Image.open(endgoblin.jpg)
 from PIL import Image
 chefgoblinsprite=Image.open(chefgoblin.jpg)
+from PIL import Image
+background=Image.open(background.jpg)
 print("")
 print("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^")
 print("You grew up in an underground mine.  Not long after you come of age, goblins attack your underground village, killing everyone you ever knew.")
